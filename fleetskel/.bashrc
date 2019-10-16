@@ -1,0 +1,13 @@
+# Alias fleetctl commands
+alias fls='fleetctl list-units'
+alias fls='fleetctl list-units'
+alias flm='fleetctl list-machines'
+alias fd='fleetctl destroy'
+alias fsb='fleetctl submit'
+alias fst='fleetctl start'
+alias fssh='fleetctl ssh'
+alias ftl='fleetctl journal -f'
+alias ftll='fleetctl journal --lines'
+alias dps='fleetctl list-machines |awk '\''{print "echo \"docker ps\" | ssh  core@"$2}'\''|sh'
+alias dfk='fleetctl list-machines |awk '\''{print "echo \"uname -a;df -k\" | ssh  core@"$2}'\''|sh'
+alias dupt='fleetctl list-machines |awk '\''{print "echo \"docker ps\" | ssh  core@"$2}'\''|sh 2>/dev/null|grep -E '\''About .* hour.* ago|. hours ago|week.* ago|month.* ago|.. minutes ago'\'''

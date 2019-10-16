@@ -1,0 +1,9 @@
+# add the skel dir and inject script to /home/core
+# Run the following commands as user core
+user=newuser
+sudo useradd -k /home/core/fleetskel/ -m ${newuser} -G fleet -p '*'
+sudo -u ${newuser} ssh-keygen -t rsa -b2048 -N "" -f /home/${newuser}/.ssh/id_rsa
+# add user's public key here
+sudo -u $user vi /home/${newuser}/.ssh/authorized_keys
+sudo -u $user chmod 700 /home/${newuser}/.ssh/authorized_keys
+sudo cat /home/${newuser}/.ssh/id_rsa.pub | ./fleetctl-inject-ssh.sh ${newuser}
